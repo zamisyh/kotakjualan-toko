@@ -50,7 +50,7 @@ http://localhost:8000/api/v1/users/toko/delete/{id}
 
 2. Retrieve member data based on member id
 - http://localhost:8000/api/v1/users/idAnggota/{id}
-http://www.outlanders.it/uploads/1594932634.png
+<img src="http://www.outlanders.it/uploads/1594932634.png">
 
 3. Retrieve store data based on member ID
 - http://localhost:8000/api/v1/users/idToko/{id}
