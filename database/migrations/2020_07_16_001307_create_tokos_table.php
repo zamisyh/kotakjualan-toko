@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTokosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('toko', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_anggota');
+            $table->string('nama_toko')->nullable();
+            $table->string('url_foto')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->text('hastag')->nullable();
+            $table->string('cover')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tokos');
+    }
+}
