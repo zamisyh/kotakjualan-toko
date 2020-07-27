@@ -22,9 +22,12 @@ class AuthController extends Controller
             $user = $user->find(Auth::user()->id);
             return response()->json([
                 "status" => true,
-                "id" => Auth::user()->id,
-                "name" => Auth::user()->name,
-                "api_token" => Auth::user()->api_token
+                "messange" => "Successfully login",
+                "data" => [
+                    "id" => Auth::user()->id,
+                    "name" => Auth::user()->name,
+                    "api_token" => Auth::user()->api_token
+                ]
             ]);
         }
 
