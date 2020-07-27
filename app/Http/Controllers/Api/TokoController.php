@@ -18,27 +18,30 @@ class TokoController extends Controller
         // ]);
 
         $request->validate([
-            'nama_toko' => 'required|min:3|unique:toko',
-            'url_foto' => 'required',
+            'nama' => 'required|min:3|unique:toko',
+            'link_foto' => 'required',
             'deskripsi' => 'required',
+            'status' => 'required',
         ]);
 
         $toko->create([
-            'id_anggota' => Auth::user()->id,
-            'nama_toko' => $request->nama_toko,
-            'url_foto' => $request->url_foto,
+            'idAnggota' => Auth::user()->id,
+            'nama' => $request->nama,
+            'link_foto' => $request->link_foto,
             'deskripsi' => $request->deskripsi,
-            'hastag' => $request->hastag,
-            'cover' => $request->cover,
+            'status' => $request->status,
         ]);
 
         return response()->json([
-            'id_anggota' => Auth::user()->id,
-            'nama_toko' => $request->nama_toko,
-            'url_foto' => $request->url_foto,
-            'deskripsi' => $request->deskripsi,
-            'hastag' => $request->hastag,
-            'cover' => $request->cover,
+            "status" => true,
+            "message" => "Data successfuly created",
+            "data" => [
+                'idAnggota' => Auth::user()->id,
+                'nama' => $request->nama,
+                'link_foto' => $request->link_foto,
+                'deskripsi' => $request->deskripsi,
+                'status' => $request->status,
+            ]
         ], 201);
 
     }
@@ -46,30 +49,24 @@ class TokoController extends Controller
     public function updateToko(Request $request, $id)
     {
         $toko = Toko::find($id);
-        $toko->url_foto = $request->url_foto;
+        $toko->nama = $request->nama;
+        $toko->link_foto = $request->link_foto;
         $toko->deskripsi = $request->deskripsi;
-        $toko->hastag = $request->hastag;
-        $toko->cover = $request->cover;
+        $toko->status = $request->status;
 
         $toko->save();
 
         return response()->json([
-            'url_foto' => $toko->url_foto,
-            'deskripsi' => $toko->deskripsi,
-            'hastag' => $toko->hastag,
-            'cover' => $toko->cover,
+            "status" => true,
+            "message" => "Data Successfully update",
+            "data" => [
+                "nama" => $request->nama,
+                "link_foto" => $request->link_foto,
+                "deskripsi" => $request->deskripsi,
+                "status" => $request->status
+            ]
         ], 201);
 
     }
 
-    public function deleteToko($id)
-    {
-        $toko = Toko::find($id);
-        $toko->delete();
-
-        return response()->json([
-            'status' => 'Success',
-            'messsage' => 'Successfully Delete'
-        ], 201);
-    }
 }
