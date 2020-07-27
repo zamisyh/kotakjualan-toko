@@ -15,12 +15,11 @@ class CreateTokosTable extends Migration
     {
         Schema::create('toko', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_anggota');
-            $table->string('nama_toko')->nullable();
-            $table->string('url_foto')->nullable();
+            $table->unsignedBigInteger('idAnggota');
+            $table->string('nama')->nullable();
+            $table->string('status')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->text('hastag')->nullable();
-            $table->string('cover')->nullable();
+            $table->text('link_foto')->nullable();
             $table->timestamps();
         });
     }
