@@ -10,6 +10,6 @@ class Toko extends Model
     protected $connection = 'mongodb';
 
     protected $fillable = [
-        'id_anggota', 'nama_toko', 'url_foto', 'deskripsi', 'hastag', 'cover'
+        'idAnggota', 'nama', 'link_foto', 'deskripsi', 'status',
     ];
 }
